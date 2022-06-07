@@ -1,6 +1,6 @@
 /* ====================== typing animation =======================*/
 var typed = new Typed(".typing", {
-  strings: ["", "Student at SLIIT", "Frontend Developer"],
+  strings: ["", "Student at SLIIT", "Full Stack Developer"],
   typeSpeed: 100,
   BackSpeed: 100,
   loop: true,
@@ -19,7 +19,6 @@ for (let i = 0; i < totalNavList; i++) {
     for (let j = 0; j < totalNavList; j++) {
       if (navList[j].querySelector("a").classList.contains("active")) {
         addBackSection(j);
-        // allSection[j].classList.add("back-section");
       }
       navList[j].querySelector("a").classList.remove("active");
     }
@@ -57,14 +56,7 @@ function updateNav(element) {
     }
   }
 }
-// document.querySelector(".hire-me").addEventListener("click", function () {
-//   const sectionIndex = this.getAttribute("data-section-index");
-//   //console.log(sectionIndex);
-//   showSection(this);
-//   updateNav(this);
-//   removeBackSection();
-//   addBackSection(sectionIndex);
-// });
+
 const navTogglerBtn = document.querySelector(".nav-toggler"),
   aside = document.querySelector(".aside");
 navTogglerBtn.addEventListener("click", () => {

@@ -32,6 +32,11 @@ body {
   scroll-behavior: smooth;
 }
 
+::selection {
+  color: #fdfdfd;
+  background: var(--skin-color);
+}
+
 ::before,
 ::after {
   box-sizing: border-box;
@@ -43,6 +48,10 @@ ul {
 
 a {
   color: inherit;
+}
+
+a:hover {
+  color: var(--skin-color);
 }
 
 .section {
@@ -69,16 +78,6 @@ a {
 .section.active {
   z-index: 2;
   opacity: 1;
-  /* animation: slideSection 1s ease; */
-}
-
-@keyframes slideSection {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
 }
 
 .hidden {
@@ -286,7 +285,7 @@ h3.hello {
 }
 
 h3.hello span {
-  font-family: "Clicker Script", cursive; /*40.32*/
+  font-family: "Clicker Script", cursive;
   font-size: 43px;
   font-weight: 700;
   color: var(--skin-color);
@@ -374,12 +373,11 @@ h3.my-profession {
   font-size: 16px;
   line-height: 25px;
   color: var(--text-black-700);
+  margin-bottom: 30px;
 }
 
-.about .about-content .personal-info {
-  flex: 0 0 60%;
-  max-width: 60%;
-  margin-top: 40px;
+.about .about-content .skill-text {
+  font-size: 20px;
 }
 
 .info-item {
@@ -411,41 +409,24 @@ h3.my-profession {
 }
 
 .about .about-content .skills {
-  flex: 0 0 40%;
-  max-width: 40%;
   margin-top: 40px;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(5, 2fr);
+  row-gap: 80px;
 }
 
 .about .about-content .skills .skill-item {
-  flex: 0 0 100%;
-  max-width: 100%;
-  margin-bottom: 20px;
-}
-
-.about .about-content .skills .skill-item h5 {
   line-height: 40px;
   font-size: 600;
-  font-size: 16px;
+  font-size: 80px;
   color: var(--text-black-900);
   text-transform: capitalize;
+  transition: all ease 0.3s;
 }
-
-.about .about-content .skills .skill-item .progress {
-  background-color: var(--bg-black-50);
-  height: 7px;
-  border-radius: 4px;
-  width: 100%;
-  position: relative;
-  align-items: center;
-}
-
-.about .about-content .skills .skill-item .progress .progress-in {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  border-radius: 4px;
-  background-color: var(--skin-color);
+.about .about-content .skills .skill-item:hover {
+  color: var(--skin-color);
+  transform: translateY(-10px);
 }
 
 /* Education */
@@ -542,11 +523,43 @@ h3.my-profession {
   font-weight: 500;
 }
 
+.projects .projects-heading h3 {
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.projects .projects-heading h3:hover {
+  color: var(--skin-color);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-name {
+  color: var(--skin-color);
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
 .projects .project-item {
   flex: 0 0 50%;
-  max-width: 50%;
+  max-width: 90%;
   max-height: 40%;
   margin-bottom: 30px;
+  transition: all ease 0.3s;
+}
+
+.projects .project-item:hover {
+  transform: translateY(-20px);
+}
+
+.ombs {
+  max-height: 20%;
 }
 
 .projects .project-item-inner {
@@ -565,11 +578,13 @@ h3.my-profession {
 
 .projects .project-item .project-links {
   padding: 20px 0 20px 0;
-  line-height: 20px;
+  line-height: 30px;
   font-size: 14px;
   font-weight: 500;
   color: var(--text-black-900);
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 /*contact*/
@@ -686,10 +701,10 @@ h3.my-profession {
   .contact .contact-info-item,
   .projects .project-item {
     flex: 0 0 50%;
-    max-width: 50%;
+    max-width: 100%;
   }
   .projects .project-item .project-links {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .home .home-info {
@@ -712,13 +727,27 @@ h3.my-profession {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .projects .project-item .project-links {
-    font-size: 20px;
-    line-height: 40px;
-  }
+
   .about .about-content .skills {
     padding-left: 30px;
     flex: 0 0 70%;
     max-width: 100%;
+  }
+
+  .about .about-content .skills .skill-item {
+    line-height: 40px;
+    font-size: 60px;
+    color: var(--text-black-900);
+  }
+  .about .about-content .skills {
+    grid-template-columns: repeat(3, 2fr);
+    column-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 495px) {
+  .about .about-content .skills {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
   }
 }
